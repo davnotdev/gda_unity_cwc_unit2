@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 
     public float x_range = 10.0f;
 
+    public GameObject projectile_prefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,5 +31,10 @@ public class PlayerController : MonoBehaviour
         }
         horizontal_input = Input.GetAxis("Horizontal");
         transform.transform.Translate(Vector3.right * horizontal_input * Time.deltaTime * speed);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(projectile_prefab, transform.position, transform.rotation);
+        }
     }
 }
